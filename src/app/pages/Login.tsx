@@ -3,9 +3,10 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
+import { getApiUrl } from "../lib/api";
 
 export function Login() {
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = getApiUrl();
   const { checkAuth } = useAuth();
   const [formData, setFormData] = useState({
     email: "",

@@ -1,9 +1,10 @@
 import { Edit2, Save, X, Loader2 } from "lucide-react";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
+import { getApiUrl } from "../lib/api";
 
 export function Profile() {
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = getApiUrl();
   const [profile, setProfile] = useState<any>(null);
   const [editData, setEditData] = useState<any>({});
   const [isEditingProfile, setIsEditingProfile] = useState(false);

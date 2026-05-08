@@ -12,9 +12,10 @@ import { Link } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../../lib/firebase";
 import { useAuth } from "../components/AuthContext";
+import { getApiUrl } from "../lib/api";
 
 export function Signup() {
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = getApiUrl();
   const { checkAuth } = useAuth();
   const [formData, setFormData] = useState({
     name: "",

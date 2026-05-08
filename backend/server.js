@@ -66,7 +66,39 @@ if (
 
 // Middleware
 app.use(statusMonitor({ path: "/status" }));
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "script-src": [
+          "'self'",
+          "'unsafe-inline'",
+          "https://checkout.razorpay.com",
+        ],
+        "connect-src": [
+          "'self'",
+          "https://api.razorpay.com",
+          "https://checkout.razorpay.com",
+        ],
+        "frame-src": [
+          "'self'",
+          "https://api.razorpay.com",
+          "https://checkout.razorpay.com",
+          "https://maps.google.com",
+          "https://www.google.com",
+        ],
+        "img-src": [
+          "'self'",
+          "data:",
+          "https://*.google.com",
+          "https://*.googleusercontent.com",
+          "https://*.gstatic.com",
+        ],
+      },
+    },
+  }),
+);
 app.use(compression());
 app.use(cors(corsOptions));
 app.use(cookieParser());

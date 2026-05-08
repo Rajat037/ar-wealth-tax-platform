@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
 import type { ReactNode } from "react";
+import { getApiUrl } from "../lib/api";
 
 interface User {
   id: number;
@@ -23,7 +24,7 @@ const AuthContext = createContext<AuthContextType>({
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3005";
+  const API_URL = getApiUrl();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 

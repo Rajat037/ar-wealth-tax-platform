@@ -2,6 +2,7 @@ import { Check } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { getApiUrl } from "../lib/api";
 
 const pricingPlans = [
   {
@@ -129,7 +130,7 @@ const fetchCsrfToken = async (apiUrl: string) => {
 export function Pricing() {
   const [paymentLoading, setPaymentLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3005";
+  const API_URL = getApiUrl();
 
   const handleBuyNow = async (plan: (typeof pricingPlans)[number]) => {
     setPaymentLoading(true);

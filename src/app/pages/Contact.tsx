@@ -1,9 +1,10 @@
 import { MapPin, Phone, Mail, Send, Star, Shield, Award } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
+import { getApiUrl } from "../lib/api";
 
 export function Contact() {
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3005";
+  const API_URL = getApiUrl();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
